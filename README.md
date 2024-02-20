@@ -1,2 +1,3 @@
 # oledTachometer
-OLED Tachometer for spinning things of all varieties, originally designed for Honda K24 engines.
+Stay tuned for a user manual - It's an assignment for tech writing due 02/25/24
+
