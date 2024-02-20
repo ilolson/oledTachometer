@@ -9,13 +9,13 @@
 #define DATA_PIN 0
 CRGB leds[NUM_LEDS];
 
-/* PARAMETERS */
+/* OPTIONS */
 const unsigned long resetTime = 100;  // in milliseconds low long after the last signal do you want the gauge to decay its value
-const double decayRate = 0.998;         // Adjust this value for the rate of decay (0.995 means 0.5% decay per loop )
-const int numReadings = 10;             // This is how 'stable' the rpm value is, adjust this to smooth out values
-double multiplier = 30000.0;           // 30000.0 for 2 signals per rev, 60000.0 for 1 signal per rev, 120000.0 for 0.5 signal per rev
-const int redline = 5;                  // 5 is a 6000RPM redline, this determines when the gauge will turn all previous LEDS red (redline rpm / 1000) - 1,
-const int maxRPM = 7999;              // Adjust the maximum rpm the display will read, default 7999, recomended max 7999
+const double decayRate = 0.998;       // Adjust this value for the rate of decay (0.995 means 0.5% decay per loop )
+const int numReadings = 10;           // This is how 'stable' the rpm value is, adjust this to smooth out values
+double multiplier = 30000.0;          // 30000.0 for 2 signals per rev, 60000.0 for 1 signal per rev, 120000.0 for 0.5 signal per rev
+const int redline = 5;                // 5 is a 6000RPM redline, this determines when the gauge will turn all previous LEDS red (redline rpm / 1000) - 1,
+const int maxRPM = 7999;              // Adjust the maximum rpm the display will read, default 7999, recomended value 7999
 
 volatile unsigned long ignCount = 0;
 unsigned long lastTime = 0;
@@ -65,6 +65,7 @@ void update() {
   timeDiff = currentTime - lastTime;
   if (ignCount > 1) {
     rpm = (multiplier) / timeDiff * ignCount;
+    rpm = constrain(rpm, 0, maxRPM);
     ignCount = 0;
     updateRollingAverage(rpm);
     displayRefresh = 1;
@@ -78,7 +79,6 @@ void updateRollingAverage(double rpm) {
   total += rpm;
   indexAVG = (indexAVG + 1) % numReadings;
   rollingAvgGra = total / numReadings;
-  rollingAvgGra = constrain(rollingAvgGra, 0, maxRPM);
   rollingAvgDis = rollingAvgGra / 1000.0;
 }
 

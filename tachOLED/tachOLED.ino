@@ -37,7 +37,6 @@ unsigned long currentTime = 0;
 unsigned long timeDiff = 0;
 unsigned long elapsedTime = 0;
 
-
 void isr() {
   ignCount++;
   lastInputTime = millis();
@@ -48,6 +47,7 @@ void update() {
   timeDiff = currentTime - lastTime;
   if (ignCount > 1) {
     rpm = (multiplier) / timeDiff * ignCount;
+    rpm = constrain(rpm, 0, maxRPM);
     ignCount = 0;
     updateRollingAverage(rpm);
     displayRefresh = 1;
@@ -61,7 +61,6 @@ void updateRollingAverage(double rpm) {
   total += rpm;
   indexAVG = (indexAVG + 1) % numReadings;
   rollingAvgGra = total / numReadings;
-  rollingAvgGra = constrain(rollingAvgGra, 0, maxRPM);
   rollingAvgDis = rollingAvgGra / 1000.0;
 }
 
@@ -92,7 +91,6 @@ void displayChar() {
   }
 }
 
-
 void setup() {
   delay(100);
   //Serial.begin(115200);
@@ -106,7 +104,6 @@ void setup() {
 }
 
 void loop() {
-
   elapsedTime = millis() - lastInputTime;
   if (elapsedTime > resetTime && rollingAvgGra > 0) {
     rpm *= decayRate;
