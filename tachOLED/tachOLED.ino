@@ -9,7 +9,7 @@ const double decayRate = .8;          // Adjust this value for the rate of decay
 const int numReadings = 10;           // This is how 'stable' the rpm value is, adjust this to smooth out values
 const int maxRPM = 7999;              // Adjust the maximum rpm the display will read, default 7999, recomended max 9999
 const int showShiftInd = 5500;        // The value the onboard LED and shift indicator will turn on
-double multiplier = 300000.0;         // 300000.0 for 2 signals per rev, 600000.0 for 1 signal per rev, 1200000.0 for 0.5 signal per rev
+double multiplier = 30000.0;         // 30000.0 for 2 signals per rev, 60000.0 for 1 signal per rev, 120000.0 for 0.5 signal per rev
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
