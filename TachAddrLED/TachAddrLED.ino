@@ -130,11 +130,15 @@ void loop() {
     // continue changing color here
 
     // int hue = map(hrpm,0,1000,80,255); // red
-    int hue = map(hrpm, 0, 1000, 255, 80);  // green
+    int hue = map(hrpm, 0, 1000, 255, 85);  // green
     // int hue = map(hrpm,0,1000,0,170); // blue
     // int hue = map(hrpm,0,1000,0,215); // Purple
     // int hue = map(hrpm,0,1000,0,145); // Aqua
     // int hue = map(hrpm, 0, 1000, 0, 255);  // Black
+
+      if (krpm > redline) { 
+      hue = map(hrpm,0,1000,80,255); 
+    }
 
     leds[krpm].setHue(hue);
     FastLED.show();
