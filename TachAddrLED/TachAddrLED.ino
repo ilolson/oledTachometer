@@ -114,8 +114,8 @@ void loop() {
 
           // change color here
 
-          // leds[i] = CRGB::Red;
-          leds[i] = CRGB::Green;
+           leds[i] = CRGB::Red;
+         // leds[i] = CRGB::Green;
           // leds[i] = CRGB::Blue;
           // leds[i] = CRGB::Purple;
           // leds[i] = CRGB::Aqua;
@@ -129,18 +129,20 @@ void loop() {
 
     // continue changing color here
 
-    // int hue = map(hrpm,0,1000,80,255); // red
-    int hue = map(hrpm, 0, 1000, 255, 85);  // green
-    // int hue = map(hrpm,0,1000,0,170); // blue
+     int hue = map(hrpm,0,1000,80,255); // red
+   // int hue = map(hrpm, 0, 1000, 255, 85);  // green
+     // int hue = map(hrpm,0,1000,0,170); // blue
     // int hue = map(hrpm,0,1000,0,215); // Purple
     // int hue = map(hrpm,0,1000,0,145); // Aqua
-    // int hue = map(hrpm, 0, 1000, 0, 255);  // Black
+     // int hue = map(hrpm, 0, 1000, 0, 255);  // Black
 
-      if (krpm > redline) { 
-      hue = map(hrpm,0,1000,80,255); 
+    if (krpm > redline) {
+      hue = map(hrpm, 0, 1000, 80, 255);
     }
 
-    leds[krpm].setHue(hue);
+    int bright = map(hrpm, 0, 1000, 0, 170);
+    leds[krpm].setHSV(hue, 255, bright);
+
     FastLED.show();
   }
 }
