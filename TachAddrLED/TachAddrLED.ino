@@ -15,7 +15,7 @@ const double decayRate = 0.998;       // Adjust this value for the rate of decay
 const int numReadings = 10;           // This is how 'stable' the rpm value is, adjust this to smooth out values
 double multiplier = 30000.0;          // 30000.0 for 2 signals per rev, 60000.0 for 1 signal per rev, 120000.0 for 0.5 signal per rev
 const int redline = 5;                // 5 is a 6000RPM redline, this determines when the gauge will turn all previous LEDS red (redline rpm / 1000) - 1,
-const int maxRPM = 7999;              // Adjust the maximum rpm the display will read, default 7999, recomended value 7999
+const int maxRPM = 7999;              // Adjust the maximum rpm the display will read, default 7999, reccomended value 7999
 
 volatile unsigned long ignCount = 0;
 unsigned long lastTime = 0;

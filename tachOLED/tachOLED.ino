@@ -4,12 +4,12 @@
 // Pin 6 is the signal pin
 
 /* OPTIONS */
-const unsigned long resetTime = 100;  // in millis low long after the last signal do you want the gauge to start decaying its value
+const unsigned long resetTime = 100;  // in milliseconds low long after the last signal do you want the gauge to start decaying its value
 const double decayRate = .8;          // Adjust this value for the rate of decay (0.9 means 10% decay per loop )
 const int numReadings = 10;           // This is how 'stable' the rpm value is, adjust this to smooth out values
-const int maxRPM = 7999;              // Adjust the maximum rpm the display will read, default 7999, recomended max 9999
+const int maxRPM = 7999;              // Adjust the maximum rpm the display will read, default 7999, reccomended max 9999
 const int showShiftInd = 5500;        // The value the onboard LED and shift indicator will turn on
-double multiplier = 30000.0;         // 30000.0 for 2 signals per rev, 60000.0 for 1 signal per rev, 120000.0 for 0.5 signal per rev
+double multiplier = 30000.0;          // 30000.0 for 2 signals per revolution, 60000.0 for 1 signal per rev, 120000.0 for 0.5 signal per rev
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
