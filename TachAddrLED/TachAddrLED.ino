@@ -114,8 +114,8 @@ void loop() {
 
           // change color here
 
-           leds[i] = CRGB::Red;
-         // leds[i] = CRGB::Green;
+          // leds[i] = CRGB::Red;
+          leds[i] = CRGB::Green;
           // leds[i] = CRGB::Blue;
           // leds[i] = CRGB::Purple;
           // leds[i] = CRGB::Aqua;
@@ -129,8 +129,8 @@ void loop() {
 
     // continue changing color here
 
-     int hue = map(hrpm,0,1000,80,255); // red
-   // int hue = map(hrpm, 0, 1000, 255, 85);  // green
+    // int hue = map(hrpm,0,1000,80,255); // red
+    int hue = map(hrpm, 0, 1000, 255, 85);  // green
      // int hue = map(hrpm,0,1000,0,170); // blue
     // int hue = map(hrpm,0,1000,0,215); // Purple
     // int hue = map(hrpm,0,1000,0,145); // Aqua
